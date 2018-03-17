@@ -1,19 +1,18 @@
 {% load static %}
-{% block approvalrequests %}
-
-    {% comment %}The tab menu starts here!{% endcomment %}
+{% block subform1 %}
+{% comment %}The tab menu starts here!{% endcomment %}
     <div class="ui pointing secondary menu">
-        <a class="active item" data-tab="clubbudget">
-            Club Budget
+        <a class=" active item" data-tab="approvals">
+            Approvals
         </a>
 
-        <a class="item" data-tab="festbudget">
-            Fest Budget
+        <a class="item" data-tab="past">
+            Past
         </a>
     </div>
 
-    <div class="ui active tab" data-tab="clubbudget">
-        <div class="ui vertical segment">
+    <div class="ui active  tab segment" data-tab="approvals">
+    	    <div class="ui vertical segment">
             <table class="ui very basic collapsing celled sortable table"
                    style="padding-left: 2.5%;
                                                           padding-right: 2.5%;
@@ -113,10 +112,10 @@
             <div class="ui divider"></div>
 
         </div>
-    </div>
 
-    <div class="ui tab" data-tab="festbudget">
-        <div class="ui vertical segment">
+    </div>
+    <div class="ui tab segment" data-tab="past">
+    	  	    <div class="ui vertical segment">
             <table class="ui very basic collapsing celled sortable table"
                    style="padding-left: 2.5%;
                                                           padding-right: 2.5%;
@@ -126,18 +125,23 @@
                 <thead>
                 <tr>
                     <th>
+                    	Status
                     </th>
 
                     <th class="four wide column">
                         Student
                     </th>
 
-                    <th class="three wide column">
-                        Fest
+                    <th class="two wide column">
+                        Club
                     </th>
 
-                    <th class="three wide column">
-                        Budget
+                    <th class="two wide column">
+                        Category
+                    </th>
+
+                    <th class="two wide column">
+                        Budget For
                     </th>
 
                     <th class="one wide column">
@@ -154,9 +158,7 @@
                 <tr>
 
                     <td class="collapsing">
-                        <div class="ui fitted checkbox">
-                            <input type="checkbox"><label></label>
-                        </div>
+                       Approved
                     </td>
 
                     <td>
@@ -172,11 +174,15 @@
                     </td>
 
                     <td>
-                        Fest #1
+                        Football Club
                     </td>
 
                     <td>
-                        &#8377; XX,XX,XXX
+                        Category #1
+                    </td>
+
+                    <td>
+                        Goal Posts
                     </td>
 
                     <td>
@@ -196,18 +202,8 @@
                 </tbody>
             </table>
 
-            <br>
 
-            <div class="ui primary right floated button">Approve Selected</div>
-            <div class="ui red right floated button">Reject Selected</div>
-
-            <br>
-            <br>
-
-            <div class="ui divider"></div>
-
-        </div>
+    </div>
     </div>
 
-    
-{% endblock %}
+{% endblock subform1%}

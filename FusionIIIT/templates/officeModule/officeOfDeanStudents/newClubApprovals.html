@@ -1,0 +1,116 @@
+{% block newClubApprovals%}
+<h3>New Club Approvals Approval</h3>
+{% comment %}The tab menu starts here!{% endcomment %}
+	<div class="ui pointing secondary menu">
+        <a class=" active item" data-tab="club">
+            Approvals
+        </a>
+
+        <a class="item" data-tab="cancelled">
+            Cancelled
+        </a>
+        <a class="item" data-tab="appoved">
+            Approved
+        </a>
+    </div>
+
+    <div class="ui active  tab segment" data-tab="club">
+    <table class="ui very basic celled table">
+    	<thead>
+		<tr>
+			<th>Club Name</th>
+			<th>Category</th>
+			<th>Co-ordinator</th>
+			<th>Co Co-ordinator</th>
+			<th>Faculty Incharge</th>
+			<th>Club File</th>
+			<th>Action</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>Name1</td>
+			<td>Technical Club</td>
+			<td>A1</td>
+			<td>B1</td>
+			<td>XYZ</td>
+			<td><a class="ui inverted circular icon button" style="margin: auto;" target="_blank" href="">
+                            <i class="large attach black icon"></i>
+                        </a></td>
+			<td><div class="ui buttons">
+				<button class="ui positive button">Accept</button>
+				<div class="or"></div>
+				<button class="ui negative button">Reject</button>
+			</div>
+			</td>
+		</tr>
+	</tbody>
+    </table>
+	</div>
+<div class="ui  tab segment" data-tab="cancelled">
+  <table class="ui very basic celled table">
+    	<thead>
+		<tr>
+			<th>Club Name</th>
+			<th>Category</th>
+			<th>Co-ordinator</th>
+			<th>Co Co-ordinator</th>
+			<th>Faculty Incharge</th>
+			<th>Club File</th>
+			<th>Comments</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>Name1</td>
+			<td>Technical Club</td>
+			<td>A1</td>
+			<td>B1</td>
+			<td>XYZ</td>
+			<td><a class="ui inverted circular icon button" style="margin: auto;" target="_blank" href="">
+                            <i class="large attach black icon"></i>
+                        </a></td>
+			<td><div class="ui form">
+						<div class="field">
+							<textarea rows="2" required></textarea> </div>
+						</div>
+			</td>
+		</tr>
+	</tbody>
+    </table>
+</div>
+<div class="ui  tab segment" data-tab="appoved">
+<table class="ui very basic celled table">
+    	<thead>
+		<tr>
+			<th>Club Name</th>
+			<th>Category</th>
+			<th>Co-ordinator</th>
+			<th>Co Co-ordinator</th>
+			<th>Faculty Incharge</th>
+			<th>Club File</th>
+			<th>Comments</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>Name1</td>
+			<td>Technical Club</td>
+			<td>A1</td>
+			<td>B1</td>
+			<td>XYZ</td>
+			<td><a class="ui inverted circular icon button" style="margin: auto;" target="_blank" href="">
+                            <i class="large attach black icon"></i>
+                        </a></td>
+			<td><div class="ui form">
+						<div class="field">
+							<textarea rows="2" required></textarea> </div>
+						</div>
+			</td>
+		</tr>
+	</tbody>
+    </table>
+</div>
+
+
+{% endblock newClubApprovals%}

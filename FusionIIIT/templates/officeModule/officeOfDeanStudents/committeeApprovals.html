@@ -1,0 +1,126 @@
+{% block form4 %}
+<h3>New Committee Approvals</h3>
+<div class="ui pointing secondary menu">
+	 <a class=" active item" data-tab="committee">
+                                Approvals
+                               </a>
+
+                                <a class="item" data-tab="cancelled">
+                                 Cancelled
+                                </a>
+                                 <a class="item" data-tab="appoved">
+                                 Approved
+                                </a>
+</div>
+<!--Approvals starts here-->
+                <div class="ui active tab segment" data-tab="committee">
+                    <table class="ui very basic celled table">
+                         <thead>
+                                            <tr>
+                                                <th>Committee Name</th>
+                                                <th>Convener</th>
+                                                 <th>Faculty incharge</th>
+                                                 <th>Contact no.</th>
+                                                <th>Action</th>
+                                            </tr>
+                        </thead>
+                         <tr>
+                                           <td>
+                                                    Committee 1
+                                            </td>
+                                            <td>
+                                               Convener !
+                                            </td>
+                                            <td>
+                                               Faculty 1
+                                            </td>
+                                            <td>
+                                               9999999999
+                                            </td>
+                                            <td>
+                                               <div class="ui buttons">
+                                                  <button class="ui positive button">Accept</button>
+                                                  <div class="or"></div>
+                                                  <button class="ui negative button">Reject</button>
+                                                </div>
+                                            </td>
+                        </tr>
+                        
+                    </table>
+                    
+                </div>
+                    
+                <!--Approvals end here -->
+                <!--Cancelled starts here-->
+                <div class="ui tab segment" data-tab="cancelled">
+                    <table class="ui very basic celled table">
+                        <thead>
+                                            <tr>
+                                                <th>Committee Name</th>
+                                                <th>Convener</th>
+                                                 <th>Faculty incharge</th>
+                                                 <th>Contact no.</th>
+                                                <th>Cooment</th>
+                                            </tr>
+                        </thead>
+                         <tr>
+                                           <td>
+                                                    Committee 1
+                                            </td>
+                                            <td>
+                                               Convener !
+                                            </td>
+                                            <td>
+                                               Faculty 1
+                                            </td>
+                                            <td>
+                                               9999999999
+                                            </td>
+                                            <td>
+                                                <div class="ui form">
+                                                <div class="field">
+                                                <textarea rows="2" required></textarea> </div>
+                                                </div>
+                                            </td>
+                        </tr>
+                    </table>
+                    
+                </div>
+                    
+                <!--Cancelled end here -->
+                
+                <!--Approved starts here-->
+                <div class="ui tab segment" data-tab="appoved">
+                    <table class="ui very basic celled table">
+                         <thead>
+                                            <tr>
+                                                <th>Committee Name</th>
+                                                <th>Convener</th>
+                                                 <th>Faculty incharge</th>
+                                                 <th>Contact no.</th>
+                                                <th>Approval Date</th>
+                                            </tr>
+                        </thead>
+                        <tr>
+                                           <td>
+                                                    Committee 1
+                                            </td>
+                                            <td>
+                                               Convener !
+                                            </td>
+                                            <td>
+                                               Faculty 1
+                                            </td>
+                                            <td>
+                                               9999999999
+                                            </td>
+                                            <td>
+                                                20/3/2018
+                                            </td>
+                        </tr>
+                    </table>
+                    
+                </div>
+                    
+                <!--Approved end here -->
+{% endblock form4 %}              

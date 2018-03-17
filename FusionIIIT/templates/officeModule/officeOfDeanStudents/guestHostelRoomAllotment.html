@@ -1,0 +1,97 @@
+{% block form9 %}
+<h3>Guest Hostel Room Allotment</h3>
+<div class="ui pointing secondary menu">
+                                <a class=" active item" data-tab="hostel_guest">
+                                Approvals
+                               </a>
+
+                                <a class="item" data-tab="cancelled_guest">
+                                 Cancelled
+                                </a>
+                                 <a class="item" data-tab="appoved_guest">
+                                 Approved
+                                </a>
+                          </div>
+  <!--Approvals start-->
+                 <div class="ui tab active segment" data-tab="hostel_guest">
+                     <table class="ui very basic  celled table">
+                         <thead>
+                                            <tr>
+                                                <th>Hall no</th>
+                                                <th>Name</th>
+                                                 <th>Arrival Date</th>
+                                                 <th>Leaving Date</th>
+                                                <th>Action</th>
+                                            </tr>
+                        </thead>
+                         <tr>
+                                <td> 3</td>
+                                <td>Name 1</td>
+                                <td>30/3/2018</td>
+                                <td>30/3/2018</td>
+                                <td>
+                                    <div class="ui buttons">
+                                                  <button class="ui positive button">Accept</button>
+                                                  <div class="or"></div>
+                                                  <button class="ui negative button">Reject</button>
+                                                </div>
+                             </td>
+                                
+                         </tr>
+                         
+                     </table>
+                     
+                 </div>
+                 
+                 <!--Approvals end-->
+                 <!--Cancelled starts-->
+                  <div class="ui tab segment" data-tab="cancelled_guest">
+                       <table class="ui very basic  celled table">
+                      <thead>
+                                            <tr>
+                                                <th>Hall no</th>
+                                                <th>Name</th>
+                                                 <th>Arrival Date</th>
+                                                 <th>Leaving Date</th>
+                                                <th>Comment</th>
+                                            </tr>
+                    </thead>
+                           <tr>
+                                <td> 3</td>
+                                <td>Name 1</td>
+                                <td>30/3/2018</td>
+                                <td>30/3/2018</td>
+                                <td>
+                                    <div class="ui form">
+                                                <div class="field">
+                                                <textarea rows="2" required></textarea> </div>
+                                                </div>
+                             </td>
+                                
+                         </tr>
+                      </table>
+                 </div>
+                 <!--Cancelled end-->
+                 <!--Approved start-->
+                <div class="ui tab segment" data-tab="appoved_guest">
+                     <table class="ui very basic  celled table">
+                      <thead>
+                                            <tr>
+                                                <th>Hall no</th>
+                                                <th>Name</th>
+                                                 <th>Arrival Date</th>
+                                                 <th>Leaving Date</th>
+                                            </tr>
+                    </thead>
+                           <tr>
+                                <td> 3</td>
+                                <td>Name 1</td>
+                                <td>30/3/2018</td>
+                                <td>30/3/2018</td>
+                                
+                         </tr>
+                      </table>
+                 </div>
+                 <!--Approved end-->
+
+{% endblock form9 %}

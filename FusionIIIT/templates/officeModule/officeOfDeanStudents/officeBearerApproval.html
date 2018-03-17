@@ -1,0 +1,110 @@
+{% block form3 %}
+	<h3>Office Bearers Approval</h3>
+	{% comment %}The tab menu starts here!{% endcomment %}
+	<div class="ui pointing secondary menu">
+        <a class=" active item" data-tab="Office">
+            Approvals
+        </a>
+
+        <a class="item" data-tab="cancelled">
+            Cancelled
+        </a>
+        <a class="item" data-tab="appoved">
+            Approved
+        </a>
+    </div>
+
+    <!--Approvals-->
+	<div class="ui active  tab segment" data-tab="Office">
+	<table class="ui very basic  celled table">
+	<thead>
+		<tr>
+			<th>Club Id</th>
+			<th>Club Type</th>
+			<th>Club Name</th>
+			<th>Coordinator</th>
+			<th>Co-Coordinator</th>
+			<th>Faculty-Incharge</th>
+			<th>Action</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>101</td>
+			<td>Technical Club</td>
+			<td>Programming Club</td>
+			<td>ABC</td>
+			<td>XYZ</td>
+			<td>PQR</td>
+			<td><div class="ui buttons">
+				<button class="ui positive button">Accept</button>
+				<div class="or"></div>
+				<button class="ui negative button">Reject</button>
+			</div>
+			</td>
+		</tr>
+	</tbody>
+	</table>
+	</div>      
+<!--Approval content Ends-->
+<!--Cancellation starts-->
+	<div class="ui  tab segment" data-tab="cancelled">
+		<table class="ui very basic  celled table">
+			<thead>
+				<tr>
+					<th>Club Id</th>
+					<th>Club Type</th>
+					<th>Club Name</th>
+					<th>Coordinator</th>
+					<th>Co-Coordinator</th>
+					<th>Faculty-Incharge</th>
+					<th>Comment</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>101</td>
+					<td>Technical Club</td>
+					<td>Programming Club</td>
+					<td>ABC</td>
+					<td>XYZ</td>
+					<td>PQR</td>
+					<td><div class="ui form">
+						<div class="field">
+							<textarea rows="2" required></textarea> </div>
+						</div>
+					</td> 
+				</tr>
+			</tbody>
+		</table>
+	</div>   
+<!--Cancellation ends-->
+<!--Approved Starts-->
+	<div class="ui  tab segment" data-tab="appoved">
+		<table class="ui very basic  celled table">
+			<thead>
+				<tr>
+					<th>Club Id</th>
+					<th>Club Type</th>
+					<th>Club Name</th>
+					<th>Coordinator</th>
+					<th>Co-Coordinator</th>
+					<th>Faculty-Incharge</th>
+					<th>Approval Date</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>101</td>
+					<td>Technical Club</td>
+					<td>Programming Club</td>
+					<td>ABC</td>
+					<td>XYZ</td>
+					<td>PQR</td>
+					<td>14/03/2018</td> 
+				</tr>
+			</tbody>
+		</table>
+	</div>   
+<!--Approved Ends-->             
+{% endblock form3%}

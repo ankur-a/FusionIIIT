@@ -1,0 +1,77 @@
+{% block hostelRoomAllotment%}
+<h3>Hostel Allotment</h3>
+<div class="ui pointing secondary menu">
+                                <a class=" active item" data-tab="new_allotment">
+                                New Allotment
+                               </a>
+                                <a class="item" data-tab="Allotment">
+                                 All Allotment
+                                </a>
+</div>
+<div class="ui tab active segment" data-tab="new_allotment">
+	<form class="ui  form">
+	<div class="fields">
+	<div class="eight wide field">
+	<label>Hall No.</label>
+	<div class="ui selection dropdown">
+  	<input type="hidden" name="Hall">
+  	<i class="dropdown icon"></i>
+  	<div class="default text">Hall No.</div>
+  	<div class="menu">
+    <div class="item" data-value="1">Hall 1</div>
+    <div class="item" data-value="0">Hall 3</div>
+    <div class="item" data-value="2">Hall 4</div>
+  </div>
+</div>
+</div>
+
+	<div class="eight wide field">
+    <label>Allotment file(.xls)</label>
+    <input type="file" name="meeting minutes" placeholder="Allotment File" >
+</div>
+</div>
+<button class="ui button" type="submit">Submit</button>
+	</form>
+</div>
+<div class="ui tab segment" data-tab="Allotment">
+	<div class="ui selection dropdown">
+  	<input type="hidden" name="Yearar">
+  	<i class="dropdown icon"></i>
+  	<div class="default text">Academic Year</div>
+  	<div class="menu">
+    <div class="item" data-value="1">2017</div>
+    <div class="item" data-value="0">2016</div>
+    <div class="item" data-value="2">2015</div>
+  </div>
+</div>
+	<table class="ui very basic celled table">
+		<thead>
+		<tr>
+			<th class= "eight wide">HAll</th>
+			<th class= "eight wide">File</th>
+			
+		</tr>
+	</thead>
+	<tr>
+		<td >Hall 1</td>
+		<td><a class="ui inverted circular icon button" style="margin: auto;" target="_blank" href="">
+                            <i class="large attach black icon"></i>
+                        </a></td>
+	</tr>
+	<tr>
+		<td>Hall 3</td>
+		<td><a class="ui inverted circular icon button" style="margin: auto;" target="_blank" href="">
+                            <i class="large attach black icon"></i>
+                        </a></td>
+	</tr>
+	<tr>
+		<td>Hall 4</td>
+		<td><a class="ui inverted circular icon button" style="margin: auto;" target="_blank" href="">
+                            <i class="large attach black icon"></i>
+                        </a></td>
+	</tr>
+	</table>
+
+</div> 
+
+{%endblock hostelRoomAllotment%}

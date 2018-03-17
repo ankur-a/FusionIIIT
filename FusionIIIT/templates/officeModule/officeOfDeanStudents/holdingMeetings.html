@@ -1,0 +1,41 @@
+{% block form1 %}
+    <h3>Holding Meetings</h3>
+    {% comment %}The tab menu starts here!{% endcomment %}
+    <div class="ui pointing secondary menu">
+        <a class="active item" data-tab="meeting">
+            New Meeting
+        </a>
+    </div>
+    <div class="ui active tab" data-tab="festbudgetform">
+    <div class="ui vertical segment">
+    <form class="ui  form">
+        <div class="field">
+            <label>Title</label>
+            <input type="text" name="Title" placeholder="Title">
+        </div>
+        <div class="fields">
+            <div class="eight wide field">
+            <label>Date</label>
+            <input type="date" name="date" placeholder="date">
+            </div>
+            <div class="eight wide field">
+            <label>Time</label>
+            <input type="time" name="time" placeholder="Time">
+            </div>
+        </div>
+        <div class="field">
+            <label>Venue</label>
+            <input type="text" name="venue" placeholder="venue">
+        </div>
+        <div class="field">
+                        <label>Details and Description</label>
+                        <textarea rows="2"></textarea>
+        </div>
+        
+        <button class="ui button" type="submit">Submit</button>
+    </form>    
+</div>
+</div>
+
+  
+{% endblock form1%}
