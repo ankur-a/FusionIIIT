@@ -100,6 +100,7 @@ INSTALLED_APPS = [
     'applications.finance_accounts.apps.FinanceAccountsConfig',
     'applications.globals.apps.GlobalsConfig',
     'applications.health_center.apps.HealthCenterConfig',
+    'applications.office_module.apps.OfficeModuleConfig',
     'applications.leave.apps.LeaveConfig',
     'applications.online_cms.apps.OnlineCmsConfig',
     'applications.placement_cell.apps.PlacementCellConfig',
