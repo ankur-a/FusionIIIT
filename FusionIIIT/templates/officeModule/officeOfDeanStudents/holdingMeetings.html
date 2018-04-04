@@ -6,12 +6,13 @@
             New Meeting
         </a>
     </div>
-    <div class="ui active tab" data-tab="festbudgetform">
+    <div class="ui active tab" data-tab="holding_meetings">
     <div class="ui vertical segment">
-    <form class="ui  form">
+    <form class="ui  form" action="holding_meeting/" method="post" id="meeting">
+        {% csrf_token %}
         <div class="field">
             <label>Title</label>
-            <input type="text" name="Title" placeholder="Title">
+            <input type="text" name="title" placeholder="Title">
         </div>
         <div class="fields">
             <div class="eight wide field">
@@ -29,7 +30,7 @@
         </div>
         <div class="field">
                         <label>Details and Description</label>
-                        <textarea rows="2"></textarea>
+                        <textarea rows="2" form="meeting" name="Agenda"></textarea>
         </div>
         
         <button class="ui button" type="submit">Submit</button>

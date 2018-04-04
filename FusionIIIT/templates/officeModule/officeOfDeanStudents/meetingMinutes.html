@@ -16,20 +16,28 @@
                                                 <th>Title</th>
                                                 <th>Time</th>
                                                  <th>Venue</th>
+                                                 <th>Date</th>
                                                  <th>File upload</th>
                                                 <th></th>
                                             </tr>
                         </thead>
                         <tr>
-                                <form class="ui  form">
-                                <td>Meeting 1</td>
-                                <td>30/3/2018</td>
-                                <td>Venue 1</td>
-                                <td><input type="file" name="meeting minutes" placeholder="meeting minutes"></td>
+                                <form class="ui  form" action="meeting_Minutes/" method="post" enctype="multipart/form-data">
+                                    {% csrf_token %}
+                                    {% for details in meetingMinutes%}
+                                <td>{{  details.title }}</td>
+                                <td>{{  details.time }}</td>
+                                <td>{{  details.venue }}</td>
+                                <td>{{  details.date }}
+                                    <input type="text" name="id" hidden="true" value="{{details.id}}">
+                                </td>
+                                <td><input type="file" name="minutes_file" placeholder="meeting minutes"></td>
                                 <td> <button class="ui button" type="submit">Submit</button></td>
+                           </tr>
+                                {% endfor %}
                             </form>
                             
-                        </tr>
+                     
                      </table>
                      
                 </div>
@@ -41,18 +49,22 @@
                                             <tr>
                                                 <th>Title</th>
                                                 <th>Time</th>
+                                                <th>Date</th>
                                                  <th>Venue</th>
                                                  <th>File</th>
                                             </tr>
                         </thead>
                         <tr>
-                                <td>Meeting 1</td>
-                                <td>30/3/2018</td>
-                                <td>Venue 1</td>
-                                <td><a class="ui inverted circular icon button" style="margin: auto;" target="_blank" href="">
+                            {% for details in final_minutes%}
+                                <td>{{  details.title }}</td>
+                                <td>{{  details.time }}</td>
+                                <td>{{  details.date }}</td>
+                                <td>{{  details.venue }}</td>
+                                <td><a class="ui inverted circular icon button" style="margin: auto;"  href="/media/{{  details.minutes_file }}">
                             <i class="large attach black icon"></i>
                         </a>
                         </tr>
+                         {% endfor %}
                     </table>
                 </div>
 {% endblock form6 %} 

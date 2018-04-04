@@ -59,17 +59,18 @@ class Course(models.Model):
 
 
 class Meeting(models.Model):
+    title= models.CharField(max_length=250 , null=True)
     venue = models.CharField(max_length=50)
     date = models.DateField()
     time = models.CharField(max_length=20)
-    agenda = models.TextField()
-    minutes_file = models.CharField(max_length=40)
+    agenda = models.TextField(null=True, blank=True)
+    minutes_file = models.FileField(upload_to='uploads/')
 
     class Meta:
         db_table = 'Meeting'
 
     def __str__(self):
-        return self.date
+        return str(self.date)
 
 
 class Calendar(models.Model):
