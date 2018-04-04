@@ -1,6 +1,18 @@
 {% load static %}
 {% block subform1 %}
 {% comment %}The tab menu starts here!{% endcomment %}
+
+<script type="text/javascript">
+    function approve(event){
+        if(event.target.name=="submit"){
+            document.getElementByTagName("FORM")[0].setAttribute("action","club_budget");
+
+        }
+
+    }
+
+
+</script>
     <div class="ui pointing secondary menu">
         <a class=" active item" data-tab="approvals">
             Approvals
@@ -24,18 +36,12 @@
                     <th>
                     </th>
 
-                    <th class="four wide column">
-                        Student
-                    </th>
-
                     <th class="two wide column">
                         Club
                     </th>
-
                     <th class="two wide column">
                         Category
                     </th>
-
                     <th class="two wide column">
                         Budget For
                     </th>
@@ -43,69 +49,42 @@
                     <th class="one wide column">
                         PFA
                     </th>
-
                     <th class="four wide column">
-                        Description
+                        Amount
+                    </th>
+                    <th class="four wide column">
+                        Remark
                     </th>
                 </tr>
                 </thead>
 
                 <tbody>
+                    <form method="post" action="" id="form">
+                        {% csrf_token %}
+
                 <tr>
-
-                    <td class="collapsing">
-                        <div class="ui fitted checkbox">
-                            <input type="checkbox"> <label></label>
-                        </div>
-                    </td>
-
-                    <td>
-                        <h4 class="ui image header">
-                            <img src="{% static 'globals/img/zlatan.jpg' %}" class="ui mini circular image">
-                            <div class="content">
-                                Zlatan Ibrahimovic
-                                <div class="sub header">
-                                    gmail@zlatan.com
-                                </div>
-                            </div>
-                        </h4>
-                    </td>
-
-                    <td>
-                        Football Club
-                    </td>
-
-                    <td>
-                        Category #1
-                    </td>
-
-                    <td>
-                        Goal Posts
-                    </td>
-
-                    <td>
-                        {% comment %}
-                            TODO: Add the attachment here!
-                        {% endcomment %}
-                        <a class="ui inverted circular icon button" style="margin: auto;" target="_blank" href="">
+                    {% for i in budget%}
+                    <td><input type="checkbox" name="check" value="{{i.id}}"></td>
+                    <td> {{ i.club }}</td>
+                    <td> {{ i.club.category }}</td>
+                    <td>{{i.budget_for}}</td>
+                    <td><a class="ui inverted circular icon button" style="margin: auto;"  href="/media/{{ i.budget_file }}">
                             <i class="large attach black icon"></i>
-                        </a>
-                    </td>
+                        </a></td>
+                    <td>{{i.budget_amt}}</td>
+                    <td><textarea rows="2" name="remark"></textarea></td>
 
-                    <td>
-                        ...
-                    </td>
                 </tr>
+                {% endfor %}
 
                 </tbody>
             </table>
 
 
             <br>
-
-            <div class="ui primary right floated button">Approve Selected</div>
-            <div class="ui red right floated button">Reject Selected</div>
-
+            <button class="ui primary right floated button" type="submit" name="submit"id="approve" formaction="budget_approval">Approve Selected</button>
+            <button class="ui red right floated button" type="submit" name="submit" id="reject" formaction="budget_rejection">Reject Selected</button>
+            </form>
             <br>
             <br>
 
@@ -127,11 +106,6 @@
                     <th>
                     	Status
                     </th>
-
-                    <th class="four wide column">
-                        Student
-                    </th>
-
                     <th class="two wide column">
                         Club
                     </th>
@@ -143,62 +117,33 @@
                     <th class="two wide column">
                         Budget For
                     </th>
+                    <th class="four wide column">
+                        Budget Amount
+                    </th>
 
                     <th class="one wide column">
                         PFA
                     </th>
-
                     <th class="four wide column">
-                        Description
+                        Remark
                     </th>
                 </tr>
                 </thead>
 
                 <tbody>
+                    {% for i in p_budget%}
                 <tr>
-
-                    <td class="collapsing">
-                       Approved
-                    </td>
-
-                    <td>
-                        <h4 class="ui image header">
-                            <img src="{% static 'globals/img/zlatan.jpg' %}" class="ui mini circular image">
-                            <div class="content">
-                                Zlatan Ibrahimovic
-                                <div class="sub header">
-                                    gmail@zlatan.com
-                                </div>
-                            </div>
-                        </h4>
-                    </td>
-
-                    <td>
-                        Football Club
-                    </td>
-
-                    <td>
-                        Category #1
-                    </td>
-
-                    <td>
-                        Goal Posts
-                    </td>
-
-                    <td>
-                        {% comment %}
-                            TODO: Add the attachment here!
-                        {% endcomment %}
-                        <a class="ui inverted circular icon button" style="margin: auto;" target="_blank" href="">
+                    <td> {{i.status}}</td>
+                    <td> {{ i.club}}</td>
+                    <td> {{ i.club.category }}</td>
+                    <td>{{i.budget_for}}</td>
+                    <td><a class="ui inverted circular icon button" style="margin: auto;"  href="/media/{{ i.budget_file }}">
                             <i class="large attach black icon"></i>
-                        </a>
-                    </td>
-
-                    <td>
-                        ...
-                    </td>
+                        </a></td>
+                    <td>{{i.budget_amt}}</td>
+                    <td>{{i.remarks}}</td>
                 </tr>
-
+                    {% endfor %}
                 </tbody>
             </table>
 

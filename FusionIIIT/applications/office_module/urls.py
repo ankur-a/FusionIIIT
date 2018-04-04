@@ -14,5 +14,7 @@ urlpatterns = [
     url(r'^genericModule/', views.genericModule, name='genericModule'),
     url(r'^officeOfDeanStudents/holding_meeting', views.holdingMeeting, name='holdingMeetings'),
     url(r'^officeOfDeanStudents/meeting_Minutes', views.meetingMinutes, name='meetingMinutes'),
-    url(r'^officeOfDeanStudents/hostelRoomAllotment', views.hostelRoomAllotment, name='meetingMinutes'),
+    url(r'^officeOfDeanStudents/hostelRoomAllotment', views.hostelRoomAllotment),
+    url(r'^officeOfDeanStudents/budget_approval', views.budgetApproval),
+    url(r'^officeOfDeanStudents/budget_rejection', views.budgetRejection),
 ]

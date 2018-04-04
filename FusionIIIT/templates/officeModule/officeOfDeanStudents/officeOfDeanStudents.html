@@ -52,18 +52,7 @@
                     <i class="right floated chevron right icon"></i>
                 </a>
                 {% endif %}
-                {% if request.user.extrainfo.designation.name == "Dean_s" %}
-                <a class="item" data-tab="third">
-                    Office Bearers Approval
-                    <i class="right floated chevron right icon"></i>
-                </a>
-                {% endif %}
-                {% if request.user.extrainfo.designation.name == "Dean_s" %}
-                <a class="item" data-tab="fourth">
-                    Committee Approvals
-                    <i class="right floated chevron right icon"></i>
-                </a>
-                {% endif %}
+                
                 {% if request.user.extrainfo.designation.name == "Dean_s" %}
                  <a class="item" data-tab="fifth">
                     New CLub Approvals
@@ -79,18 +68,6 @@
                 {% if request.user.extrainfo.designation.name == "superintendent" %}
                  <a class="item" data-tab="seventh">
                     Hostel Room Allotment
-                    <i class="right floated chevron right icon"></i>
-                </a>
-                {% endif %}
-                {% if request.user.extrainfo.designation.name == "superintendent" %}
-                <a class="item" data-tab="eighth">
-                    Hostel Guest Room Allotment
-                    <i class="right floated chevron right icon"></i>
-                </a>
-                {% endif %}
-                {% if request.user.extrainfo.designation.name == "superintendent" %}
-                <a class="item" data-tab="ninth">
-                    Notifications
                     <i class="right floated chevron right icon"></i>
                 </a>
                 {% endif %}
@@ -126,22 +103,6 @@
             </div>
             {% comment %}The budget approvals ends here!{% endcomment %}
 
-            {% comment %}The office bearers starts here!{% endcomment %}
-            <div class="ui tab segment" data-tab="third">
-                {% block form3 %}
-                    {% include 'officeModule/officeOfDeanStudents/officeBearerApproval.html' %}
-                {% endblock %}
-            </div>
-            {% comment %}The office bearers ends here!{% endcomment %}
-
-            {% comment %}The Committee Approvals starts here!{% endcomment %}
-            <div class="ui tab segment" data-tab="fourth">
-                 {% block form4 %}
-                    {% include 'officeModule/officeOfDeanStudents/committeeApprovals.html' %}
-                {% endblock %}
-            </div>
-            {% comment %}The Committee Approvals ends here!{% endcomment %}
-
             {% comment %}The New Club Approvals starts here!{% endcomment %}
             <div class="ui tab segment" data-tab="fifth">
                 {% block form5 %}
@@ -166,23 +127,6 @@
                 {% endblock %}
             </div>
             {% comment %}The Hostel Room Allotment ends here!{% endcomment %}
-
-            {% comment %}The Hostel Guest Room Allotment starts here!{% endcomment %}
-            <div class="ui tab segment" data-tab="eighth">
-                {% block form8 %}
-                    {% include 'officeModule/officeOfDeanStudents/guestHostelRoomAllotment.html' %}
-                {% endblock %}
-            </div>
-            {% comment %}The Hostel Guest Room Allotment ends here!{% endcomment %}
-            
-            {% comment %}The Notifications starts here!{% endcomment %}
-            <div class="ui tab segment" data-tab="ninth">
-                 {% block form9 %}
-                    {% include 'officeModule/officeOfDeanStudents/notifications.html' %}
-                {% endblock %}
-            </div>
-            {% comment %}The Notifications ends here!{% endcomment %}
-
 
         </div>
         {% comment %}The central-rail segment ends here!{% endcomment %}

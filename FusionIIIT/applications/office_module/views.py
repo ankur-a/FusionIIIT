@@ -2,16 +2,21 @@ from django.shortcuts import render
 from django.http import HttpResponse , HttpResponseRedirect
 from applications.academic_information.models import Meeting
 from .models import Constants,hostel_allotment
+from applications.gymkhana.models import Club_budget
 
 def officeOfDeanStudents(request):
+    budget= Club_budget.objects.all().filter(status='open');
+    past_budget=Club_budget.objects.all().exclude(status='open');
     minutes=Meeting.objects.all().filter(minutes_file="");
     final_minutes=Meeting.objects.all().exclude(minutes_file="");
     hall_allotment=hostel_allotment.objects.all()
     context = {'meetingMinutes':minutes,
                 'final_minutes':final_minutes,
                 'hall': Constants.HALL_NO,
-                'hall_allotment':hall_allotment,}
-    print(Constants.HALL_NO)
+                'hall_allotment':hall_allotment,
+                'budget':budget,
+                'p_budget':past_budget}
+    # print(budget)
     return render(request, "officeModule/officeOfDeanStudents/officeOfDeanStudents.html", context)
 
 
@@ -71,4 +76,31 @@ def hostelRoomAllotment(request):
     #description= request.POST.get('description')
     p=hostel_allotment(allotment_file=file,hall_no=hall_no)
     p.save()
+    return HttpResponseRedirect('/office/officeOfDeanStudents')
+
+def budgetApproval(request):
+    # print(request.POST.getlist('check'))
+    id_r=request.POST.getlist('check')
+    remark=request.POST.getlist('remark')
+    for i in range(len(id_r)):
+        a=Club_budget.objects.get(id=id_r[i]);
+        a.status='confirmed'
+        a.remarks=remark[i]
+        a.save()
+        
+
+    # print(id[0])
+
+    return HttpResponseRedirect('/office/officeOfDeanStudents')
+
+def budgetRejection(request):
+    id_r=request.POST.getlist('check')
+    remark=request.POST.getlist('remark')
+    # print(remark)
+    for i in range(len(id_r)):
+        a=Club_budget.objects.get(id=id_r[i]);
+        a.status='rejected'
+        a.remarks=remark[i]
+        a.save()
+
     return HttpResponseRedirect('/office/officeOfDeanStudents')
