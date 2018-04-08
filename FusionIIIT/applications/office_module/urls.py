@@ -17,4 +17,7 @@ urlpatterns = [
     url(r'^officeOfDeanStudents/hostelRoomAllotment', views.hostelRoomAllotment),
     url(r'^officeOfDeanStudents/budget_approval', views.budgetApproval),
     url(r'^officeOfDeanStudents/budget_rejection', views.budgetRejection),
+    url(r'^officeOfDeanStudents/club_approval', views.clubApproval),
+    url(r'^officeOfDeanStudents/club_rejection', views.clubRejection),
+
 ]

@@ -1,21 +1,29 @@
 from django.shortcuts import render
 from django.http import HttpResponse , HttpResponseRedirect
 from applications.academic_information.models import Meeting
-from .models import Constants,hostel_allotment
-from applications.gymkhana.models import Club_budget
+from .models import Constants,hostel_allotment,Budget
+from applications.gymkhana.models import Club_budget,Club_info
 
 def officeOfDeanStudents(request):
-    budget= Club_budget.objects.all().filter(status='open');
+    budget_app= Club_budget.objects.all().filter(status='open');
     past_budget=Club_budget.objects.all().exclude(status='open');
     minutes=Meeting.objects.all().filter(minutes_file="");
     final_minutes=Meeting.objects.all().exclude(minutes_file="");
     hall_allotment=hostel_allotment.objects.all()
+    clubNew= Club_info.objects.all().filter(status='open')
+    club =Club_info.objects.all().exclude(status='open')
+    budgets=Budget.objects.all()
     context = {'meetingMinutes':minutes,
                 'final_minutes':final_minutes,
                 'hall': Constants.HALL_NO,
                 'hall_allotment':hall_allotment,
-                'budget':budget,
-                'p_budget':past_budget}
+                'budget_app':budget_app,
+                'p_budget':past_budget,
+                'clubNew':clubNew,
+                'club':club,
+                'budgets':budgets,}
+    for details in budgets:
+        details.budget_available=details.budget_allocated - details.budget_expenditure
     # print(budget)
     return render(request, "officeModule/officeOfDeanStudents/officeOfDeanStudents.html", context)
 
@@ -85,7 +93,7 @@ def budgetApproval(request):
     for i in range(len(id_r)):
         a=Club_budget.objects.get(id=id_r[i]);
         a.status='confirmed'
-        a.remarks=remark[i]
+        a.remarks=request.POST.get(id_r[i])
         a.save()
         
 
@@ -100,7 +108,29 @@ def budgetRejection(request):
     for i in range(len(id_r)):
         a=Club_budget.objects.get(id=id_r[i]);
         a.status='rejected'
-        a.remarks=remark[i]
+        a.remarks=request.POST.get(id_r[i])
+        a.save()
+
+    return HttpResponseRedirect('/office/officeOfDeanStudents')
+
+
+def clubApproval(request):
+    id_r=request.POST.getlist('check')
+    # print(remark)
+    for i in range(len(id_r)):
+        a=Club_info.objects.get(pk=id_r[i]);
+        a.status='confirmed'
+        a.save()
+
+    return HttpResponseRedirect('/office/officeOfDeanStudents')
+
+
+def clubRejection(request):
+    id_r=request.POST.getlist('check')
+    # print(remark)
+    for i in range(len(id_r)):
+        a=Club_info.objects.get(id=id_r[i]);
+        a.status='rejected'
         a.save()
 
     return HttpResponseRedirect('/office/officeOfDeanStudents')

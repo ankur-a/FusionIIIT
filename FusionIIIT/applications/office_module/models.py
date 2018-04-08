@@ -21,6 +21,12 @@ class Constants:
         ('HALL-4','hall-4'),
     )
 
+    CLUB_TYPE = (
+        ('TECHNICAL', 'technical'),
+        ('CULTURAL', 'cultural'),
+        ('SPORTS', 'sports'),
+    )
+
 
 
 class DeanS_approve_committes(models.Model):
@@ -53,3 +59,13 @@ class hostel_allotment(models.Model):
     
     def __str__(self):
         return '{} - {}'.format(self.hall_no, self.allotment_file)
+
+class Budget(models.Model):
+    id=models.AutoField(primary_key=True)
+    budget_type=models.CharField(max_length=20)
+    club_type=models.CharField(max_length=20, choices=Constants.CLUB_TYPE, default='')
+    budget_allocated=models.PositiveIntegerField(default=0)
+    budget_expenditure=models.PositiveIntegerField(default=0)
+    budget_available=models.PositiveIntegerField(default=0)
+    # def __str__(self):
+    #         return self.budget_type + '-' + self.budget_allocated

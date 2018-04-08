@@ -41,7 +41,14 @@
             <div class="ui huge fluid vertical pointing menu"
                  style="max-width: 320px;">
                  {% if request.user.extrainfo.designation.name == "Dean_s" %}
-                <a class="active item" data-tab="first">
+                    <a class="active item" data-tab="zero">
+                     Budgets
+                    <i class="right floated chevron right icon"></i>
+                </a>
+                 {% endif %}
+
+                 {% if request.user.extrainfo.designation.name == "Dean_s" %}
+                <a class="item" data-tab="first">
                     Holding Meetings
                     <i class="right floated chevron right icon"></i>
                 </a>
@@ -59,6 +66,8 @@
                     <i class="right floated chevron right icon"></i>
                 </a>
                 {% endif %}
+
+
                 {% if request.user.extrainfo.designation.name == "superintendent" %}
                      <a class="item" data-tab="sixth">
                         Meeting minutes
@@ -85,6 +94,14 @@
         {% endcomment %}
         <div class="eight wide column">
             {% comment %}The Details start here!{% endcomment %}
+
+            {% comment %}The Holding meetings start here!{% endcomment %}
+            <div class="ui tab segment" data-tab="zero">
+                {% block form0 %}
+                    {% include 'officeModule/officeOfDeanStudents/budgets.html' %}
+                {% endblock %}
+            </div>
+            {% comment %}The Holding meetings end here!{% endcomment %}
 
             {% comment %}The Holding meetings start here!{% endcomment %}
             <div class="ui tab segment" data-tab="first">
