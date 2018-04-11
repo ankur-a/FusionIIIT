@@ -12,7 +12,7 @@ def officeOfDeanStudents(request):
     hall_allotment=hostel_allotment.objects.all()
     clubNew= Club_info.objects.all().filter(status='open')
     club =Club_info.objects.all().exclude(status='open')
-    budgets=Budget.objects.all()
+    budgets=Club_info.objects.all().exclude(status='open')
     context = {'meetingMinutes':minutes,
                 'final_minutes':final_minutes,
                 'hall': Constants.HALL_NO,
@@ -23,7 +23,8 @@ def officeOfDeanStudents(request):
                 'club':club,
                 'budgets':budgets,}
     for details in budgets:
-        details.budget_available=details.budget_allocated - details.budget_expenditure
+        print(type(details))
+        details.avail_budget=details.alloted_budget - details.spent_budget
     # print(budget)
     return render(request, "officeModule/officeOfDeanStudents/officeOfDeanStudents.html", context)
 

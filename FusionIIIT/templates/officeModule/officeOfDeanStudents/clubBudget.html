@@ -1,7 +1,55 @@
 {% load static %}
 {% block subform1 %}
 {% comment %}The tab menu starts here!{% endcomment %}
+<script type="text/javascript">
+    function view(a){
+        var id= '.ui.small.modal.'+a;
+        //alert(id);
+        $(id).modal('show');
+    }
+
+    function submit(a){
+        if(a=='approve'){
+            document.getElementById("modal_form").setAttribute("action", "budget_approval");
+            document.getElementById("modal_form").submit();
+        }
+        else{
+            document.getElementById("modal_form").setAttribute("action", "budget_rejection");
+            document.getElementById("modal_form").submit();
+        }
+    }
+
+
 </script>
+
+{% for i in budget_app %}
+
+<div class="ui small modal {{i.pk}} ">
+  
+<form class="form" action="" method="post" enctype="multipart/form-data" id="modal_form">
+    {% csrf_token %}
+
+    <h4 class="ui dividing header">
+    Budget Approvals
+    </h4>
+        <input type="text" hidden="true" name="check" value="{{i.id}}" >
+        <input type="text" value="{{i.club}}" disabled="true">
+        <input type="text" value="{{ i.club.category }}" disabled="true">
+        <input type="text" value="{{ i.budget_for }}" disabled="true">
+        <a class="ui inverted circular icon button" style="margin: auto;"  href="/media/{{ i.budget_file }}">
+                            <i class="large attach black icon"></i>
+                        </a>
+        <textarea rows="2" name="{{i.id}}"></textarea>
+
+
+                                    
+        <button onclick="submit('approve')" class="ui positive right labeled icon button" type="submit" name="submit" id="approve" formaction="budget_approval">Approve Selected</button>
+        <button onclick="submit('approve')" class="ui red right floated button" type="submit" name="submit" id="reject" formaction="budget_rejection">Reject Selected</button>
+    </form>
+  
+</div>
+{% endfor %}
+
     <div class="ui pointing secondary menu">
         <a class=" active item" data-tab="approvals">
             Approvals
@@ -53,7 +101,7 @@
                 <tr>
                     {% for i in budget_app %}
                     <td><input type="checkbox" name="check" value="{{i.id}}"></td>
-                    <td> {{ i.club }}</td>
+                    <td onclick="view('{{ i.pk }}')"> {{ i.club }}</td>
                     <td> {{ i.club.category }}</td>
                     <td>{{i.budget_for}}</td>
                     <td><a class="ui inverted circular icon button" style="margin: auto;"  href="/media/{{ i.budget_file }}">

@@ -1,9 +1,12 @@
 {% block form1 %}
-    <h3>Holding Meetings</h3>
+    <h3>Meetings</h3>
     {% comment %}The tab menu starts here!{% endcomment %}
     <div class="ui pointing secondary menu">
         <a class="active item" data-tab="meeting">
             New Meeting
+        </a>
+         <a class="item" data-tab="old">
+            Meetings
         </a>
     </div>
     <div class="ui active tab" data-tab="holding_meetings">
@@ -35,6 +38,44 @@
         
         <button class="ui button" type="submit">Submit</button>
     </form>    
+</div>
+</div>
+<div class="ui tab" data-tab="old">
+    <div class="ui vertical segment">
+    <table class="ui very basic  celled table">
+                        <thead>
+                                            <tr>
+                                                <th>Title</th>
+                                                <th>Time</th>
+                                                <th>Date</th>
+                                                 <th>Venue</th>
+                                                 <th>File</th>
+                                            </tr>
+                        </thead>
+                        <tr>
+                            {% for details in final_minutes%}
+                                <td>{{  details.title }}</td>
+                                <td>{{  details.time }}</td>
+                                <td>{{  details.date }}</td>
+                                <td>{{  details.venue }}</td>
+                                <td><a class="ui inverted circular icon button" style="margin: auto;"  href="/media/{{  details.minutes_file }}">
+                            <i class="large attach black icon"></i>
+                        </a> </td>
+                        </tr>
+                        {% endfor %}
+                        <tr>
+                            {% for details in meetingMinutes%}
+                                <td>{{  details.title }}</td>
+                                <td>{{  details.time }}</td>
+                                <td>{{  details.venue }}</td>
+                                <td>{{  details.date }}
+                                </td>
+                                <td> No file</td>
+                                </tr>
+                                {% endfor %}
+                        
+                         
+                    </table>
 </div>
 </div>
 

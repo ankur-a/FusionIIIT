@@ -35,6 +35,9 @@ class Club_info(models.Model):
 	club_file = models.FileField(upload_to='uploads/',null=True)
 	activity_calender = models.FileField(upload_to='uploads/',null=True)
 	description = models.TextField(max_length=256, null=True)
+	alloted_budget=models.IntegerField(null=True)
+	spent_budget = models.IntegerField(null=True)
+	avail_budget=models.IntegerField(null=True)
 	status = models.CharField(max_length=50, choices = Constants.status, default = 'open')
 
 	def __str__(self):

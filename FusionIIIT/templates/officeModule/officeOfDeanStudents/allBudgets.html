@@ -1,21 +1,6 @@
 <form>
     {% comment %}The add a new skill Accordian starts here!{% endcomment %}
-    <div class="ui form" style="padding: 8px; padding-left: 56px; padding-right: 12px;">
-        <div class="two fields">
-            <div class="twelve wide field">
-                <label>Item</label>
-                <input value="Search" class="ui search large input">
-            </div>
-
-            <div class="four wide field">
-                <label><br></label>
-                <button class="ui primary submit button">
-                    Search
-                    <i class="ui right floated search icon"></i>
-                </button>
-            </div>
-        </div>
-    </div>
+    
 </form>
 
 <div class="ui divider"></div>
@@ -28,19 +13,18 @@
                                                           margin: auto;">
     <thead>
     <tr>
-        <th class="one wide column">
-        </th>
+        
 
         <th class="one wide column">
             Sr.#
         </th>
 
         <th class="four wide column">
-            Budget
+            Club Name
         </th>
 
         <th class="six wide column">
-            Club allotted
+            Category
         </th>
 
         <th class="four wide column">
@@ -60,18 +44,13 @@
     <tr>
 
         {% for details in budgets%}
-
-        <td class="collapsing">
-            <div class="ui fitted checkbox">
-                <input type="checkbox"> <label></label>
-            </div>
-        </td>   
-        <td></td>
-        <td>{{  forloop.counter0|add:details.id }}</td>
-        <td>{{  details.club_type }}</td>
-        <td>{{  details.budget_allocated }}</td>
-        <td>{{  details.budget_expenditure }}</td>
-        <td>{{  details.budget_available }}</td>
+   
+        <td>{{  forloop.counter }}</td>
+        <td>{{  details.club_name }}</td>
+        <td>{{  details.category }}</td>
+        <td>{{  details.alloted_budget }}</td>
+        <td>{{  details.spent_budget }}</td>
+        <td>{{  details.avail_budget}}</td>
         
         </tr>
         {% endfor %}
@@ -82,8 +61,6 @@
 
 <br>
 
-<div class="ui right floated button">Edit Selected</div>
-<div class="ui red right floated button">Delete Selected</div>
 
 <br>
 <br>
