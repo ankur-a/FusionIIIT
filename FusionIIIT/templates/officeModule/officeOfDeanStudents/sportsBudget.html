@@ -20,10 +20,6 @@
             Club Name
         </th>
 
-        <th class="six wide column">
-            Category
-        </th>
-
         <th class="four wide column">
             Budget allocated
         </th>
@@ -44,7 +40,6 @@
             {% if details.category == 'Sports' %}
         <td>{{  forloop.counter }}</td>
         <td>{{  details.club_name }}</td>
-        <td>{{  details.category }}</td>
         <td>{{  details.alloted_budget }}</td>
         <td>{{  details.spent_budget }}</td>
         <td>{{  details.avail_budget}}</td>

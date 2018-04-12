@@ -1,0 +1,67 @@
+{% load static %}
+{% block modal4 %}
+<script type="text/javascript">
+    function modals(a){
+        var id= '.ui.modal.'+a;
+        // alert(id);
+        $(id).modal('show');
+       }
+
+</script>
+
+{% for i in budgets %}
+<div class="ui modal {{ i.pk }} ">
+	<div class="header">{{ i.pk }}</div>
+	
+	{% for i1 in approved_budgets %}
+		
+		<table class="ui very basic collapsing celled sortable table"
+                   style="padding-left: 2.5%;
+                                                          padding-right: 2.5%;
+                                                          padding-top: 1%;
+                                                          padding-bottom: 1.5%;
+                                                          margin: auto;" id="tableID">
+		{% if i.pk in i1.club|stringformat:"s" %}
+			<thead>
+                <tr>
+                    <th class="two wide column">
+                        Budget For
+                    </th>
+
+                    <th class="one wide column">
+                        PFA
+                    </th>
+                    <th class="four wide column">
+                        Amount
+                    </th>
+                    <th class="four wide column">
+                        Remark
+                    </th>
+                </tr>
+             </thead>
+             <tbody>
+             	<tr>
+             	<td> {{i1.budget_for}}</td>
+             	<td><a class="ui inverted circular icon button" style="margin: auto;"  href="/media/{{ i1.budget_file }}">
+                            <i class="large attach black icon"></i>
+                        </a></td>
+                 <td>{{i1.budget_amt}}</td>
+                 <td>{{ i1.remarks;}}</td>
+             </tr>
+             	
+             </tbody>
+             
+		{% endif %}
+</table>
+	{% endfor %}
+
+
+  <div class="content">
+  </div>
+
+</div>
+
+
+{% endfor %}
+
+{% endblock %}

@@ -1,4 +1,5 @@
 {% block newClubApprovals%}
+{% include 'officeModule/officeOfDeanStudents/newClubApprovalsModal.html' %}
 <h3>New Club Approvals Approval</h3>
 {% comment %}The tab menu starts here!{% endcomment %}
 	<div class="ui pointing secondary menu">
@@ -30,7 +31,7 @@
 		<tr>
 			{% for i in clubNew %}
 			<td><input type="checkbox" name="check" value="{{i.pk}}"></td>
-			<td>{{i.club_name}}</td>
+			<td onclick="view('{{ i.pk }}')">{{i.club_name}}</td>
 			<td>{{i.category}}</td>
 			<td>{{i.co_ordinator}}</td>
 			<td>{{i.co_coordinator}}</td>

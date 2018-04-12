@@ -3,6 +3,7 @@ from django.http import HttpResponse , HttpResponseRedirect
 from applications.academic_information.models import Meeting
 from .models import Constants,hostel_allotment,Budget
 from applications.gymkhana.models import Club_budget,Club_info
+import json 
 
 def officeOfDeanStudents(request):
     budget_app= Club_budget.objects.all().filter(status='open');
@@ -12,7 +13,8 @@ def officeOfDeanStudents(request):
     hall_allotment=hostel_allotment.objects.all()
     clubNew= Club_info.objects.all().filter(status='open')
     club =Club_info.objects.all().exclude(status='open')
-    budgets=Club_info.objects.all().exclude(status='open')
+    budgets=Club_info.objects.all().filter(status='confirmed')
+    approved_budgets=Club_budget.objects.all().exclude(status='confirmed');
     context = {'meetingMinutes':minutes,
                 'final_minutes':final_minutes,
                 'hall': Constants.HALL_NO,
@@ -21,13 +23,9 @@ def officeOfDeanStudents(request):
                 'p_budget':past_budget,
                 'clubNew':clubNew,
                 'club':club,
-                'budgets':budgets,}
-    for details in budgets:
-        print(type(details))
-        details.avail_budget=details.alloted_budget - details.spent_budget
-    # print(budget)
+                'budgets':budgets,
+                'approved_budgets':approved_budgets}
     return render(request, "officeModule/officeOfDeanStudents/officeOfDeanStudents.html", context)
-
 
 def officeOfPurchaseOfficr(request):
     return render(request, "officeModule/officeOfPurchaseOfficer/officeOfPurchaseOfficer.html", {})
@@ -116,10 +114,13 @@ def budgetRejection(request):
 
 
 def clubApproval(request):
+    print(request.POST)
     id_r=request.POST.getlist('check')
     # print(remark)
+    # print(Club_info.objects.get(pk=id_r[0]))
+    print id_r
     for i in range(len(id_r)):
-        a=Club_info.objects.get(pk=id_r[i]);
+        a=Club_info.objects.get(pk=id_r[i])
         a.status='confirmed'
         a.save()
 
@@ -130,7 +131,7 @@ def clubRejection(request):
     id_r=request.POST.getlist('check')
     # print(remark)
     for i in range(len(id_r)):
-        a=Club_info.objects.get(id=id_r[i]);
+        a=Club_info.objects.get(pk=id_r[i]);
         a.status='rejected'
         a.save()
 

@@ -62,7 +62,7 @@
                 
                 {% if request.user.extrainfo.designation.name == "Dean_s" %}
                  <a class="item" data-tab="fifth">
-                    New CLub Approvals
+                    New Club Approvals
                     <i class="right floated chevron right icon"></i>
                 </a>
                 {% endif %}
@@ -195,7 +195,7 @@
         $(document).ready(function(){
             $("#textLoader").toggle();
             $("#replacement-card").toggle();
-            setTimeout(loader, 1750);
+            setTimeout(loader, 175);
         });
 
         function loader() {
@@ -205,5 +205,9 @@
             $("#loader").addClass("disabled");
         }
     </script>
-
+    <script src="https://cdn.rawgit.com/mdehoog/Semantic-UI/6e6d051d47b598ebab05857545f242caf2b4b48c/dist/semantic.min.js"></script>
+    <script type="text/javascript" src="{% static 'globals/js/datepicker.js' %}"></script>
+    <script type="text/javascript" src="{% static 'globals/js/tablesort.js' %}"></script>
+    <script type="text/javascript" src="{% static 'globals/js/modal.js' %}"></script>
+    <script type="text/javascript" src="{% static 'visitor_hostel/visitor-hostel.js' %}"></script>
 {% endblock %}

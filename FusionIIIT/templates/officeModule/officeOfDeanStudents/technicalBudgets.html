@@ -1,3 +1,5 @@
+{% include 'officeModule/officeOfDeanStudents/technicalBudgetsModal.html' %}
+
 
 <div class="ui divider"></div>
 
@@ -31,14 +33,10 @@
     </thead>
 
     <tbody>
-    <tr>
-    {% for details in budgets%}
+        {% for details in budgets%}
+    <tr onclick="modals('{{ details.pk }}')">
+    
         {% if details.category == 'Technical' %}
-        <td class="collapsing">
-            <div class="ui fitted checkbox">
-                <input type="checkbox"> <label></label>
-            </div>
-        </td>
         <td>{{  forloop.counter }}</td>
         <td>{{  details.club_name }}</td>
         <td>{{  details.alloted_budget }}</td>
