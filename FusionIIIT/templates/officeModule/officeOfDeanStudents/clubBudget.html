@@ -4,15 +4,15 @@
 {% comment %}The tab menu starts here!{% endcomment %}
 
     <div class="ui pointing secondary menu">
-        <a class=" active item" data-tab="approvals">
+        <a class=" active item" data-tab="approvals_budget">
             Approvals
         </a>
 
-        <a class="item" data-tab="past">
+        <a class="item" data-tab="past_budget">
             Past
         </a>
     </div>
-    <div class="ui active  tab segment" data-tab="approvals">
+    <div class="ui active  tab segment" data-tab="approvals_budget">
     	    <div class="ui vertical segment">
             <table class="ui very basic collapsing celled sortable table"
                    style="padding-left: 2.5%;
@@ -81,7 +81,7 @@
         </div>
 
     </div>
-    <div class="ui tab segment" data-tab="past">
+    <div class="ui tab segment" data-tab="past_budget">
     	  	    <div class="ui vertical segment">
             <table class="ui very basic collapsing celled sortable table"
                    style="padding-left: 2.5%;
@@ -120,7 +120,7 @@
 
                 <tbody>
                     {% for i in p_budget%}
-                <tr>
+                <tr {% if i.status == "confirmed" %} class="positive" {% else %}  class="negative"  {% endif %}>
                     <td> {{i.status}}</td>
                     <td> {{ i.club}}</td>
                     <td> {{ i.club.category }}</td>

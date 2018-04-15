@@ -33,3 +33,7 @@ $('#rangeend3').calendar({
     type: 'date',
     startCalendar: $('#rangestart3')
 });
+$('#meeting_date').calendar({
+    type: 'date'
+});
+

@@ -3,7 +3,8 @@
 <script type="text/javascript">
     function modals(a){
         var id= '.ui.modal.'+a;
-        // alert(id);
+        alert(id);
+        id=id.replace(" ",".");
         $(id).modal('show');
        }
 
@@ -12,15 +13,13 @@
 {% for i in budgets %}
 <div class="ui modal {{ i.pk }} ">
 	<div class="header">{{ i.pk }}</div>
-	
+
+	<div class="ui label big">Alloted Budget</div> <label>{{ i.alloted_budget }}</label>
+	<div class="ui label big">Available Budget</div> <label>{{ i.avail_budget }}</label>
+	<div class="ui vertical segment">
+	<h3>Spendings this year</h3>
 	{% for i1 in approved_budgets %}
-		
-		<table class="ui very basic collapsing celled sortable table"
-                   style="padding-left: 2.5%;
-                                                          padding-right: 2.5%;
-                                                          padding-top: 1%;
-                                                          padding-bottom: 1.5%;
-                                                          margin: auto;" id="tableID">
+		<table class="ui very basic collapsing celled sortable table">
 		{% if i.pk in i1.club|stringformat:"s" %}
 			<thead>
                 <tr>
@@ -46,7 +45,7 @@
                             <i class="large attach black icon"></i>
                         </a></td>
                  <td>{{i1.budget_amt}}</td>
-                 <td>{{ i1.remarks;}}</td>
+                 <td>{{ i1.remarks}}</td>
              </tr>
              	
              </tbody>
@@ -61,7 +60,7 @@
 
 </div>
 
-
+</div>
 {% endfor %}
 
 {% endblock %}

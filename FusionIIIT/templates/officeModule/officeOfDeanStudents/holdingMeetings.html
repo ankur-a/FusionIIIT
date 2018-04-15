@@ -1,83 +1,39 @@
+{% load static %}
 {% block form1 %}
     <h3>Meetings</h3>
     {% comment %}The tab menu starts here!{% endcomment %}
     <div class="ui pointing secondary menu">
-        <a class="active item" data-tab="meeting">
+        <a class="active item" data-tab="meeting_m">
             New Meeting
         </a>
-         <a class="item" data-tab="old">
+         <a class="item" data-tab="old_m">
             Meetings
         </a>
     </div>
-    <div class="ui active tab" data-tab="holding_meetings">
+    
+    <div class="ui active tab" data-tab="meeting_m">
     <div class="ui vertical segment">
-    <form class="ui  form" action="holding_meeting/" method="post" id="meeting">
-        {% csrf_token %}
-        <div class="field">
-            <label>Title</label>
-            <input type="text" name="title" placeholder="Title">
-        </div>
-        <div class="fields">
-            <div class="eight wide field">
-            <label>Date</label>
-            <input type="date" name="date" placeholder="date">
-            </div>
-            <div class="eight wide field">
-            <label>Time</label>
-            <input type="time" name="time" placeholder="Time">
-            </div>
-        </div>
-        <div class="field">
-            <label>Venue</label>
-            <input type="text" name="venue" placeholder="venue">
-        </div>
-        <div class="field">
-                        <label>Details and Description</label>
-                        <textarea rows="2" form="meeting" name="Agenda"></textarea>
-        </div>
-        
-        <button class="ui button" type="submit">Submit</button>
-    </form>    
-</div>
-</div>
-<div class="ui tab" data-tab="old">
-    <div class="ui vertical segment">
-    <table class="ui very basic  celled table">
-                        <thead>
-                                            <tr>
-                                                <th>Title</th>
-                                                <th>Time</th>
-                                                <th>Date</th>
-                                                 <th>Venue</th>
-                                                 <th>File</th>
-                                            </tr>
-                        </thead>
-                        <tr>
-                            {% for details in final_minutes%}
-                                <td>{{  details.title }}</td>
-                                <td>{{  details.time }}</td>
-                                <td>{{  details.date }}</td>
-                                <td>{{  details.venue }}</td>
-                                <td><a class="ui inverted circular icon button" style="margin: auto;"  href="/media/{{  details.minutes_file }}">
-                            <i class="large attach black icon"></i>
-                        </a> </td>
-                        </tr>
-                        {% endfor %}
-                        <tr>
-                            {% for details in meetingMinutes%}
-                                <td>{{  details.title }}</td>
-                                <td>{{  details.time }}</td>
-                                <td>{{  details.venue }}</td>
-                                <td>{{  details.date }}
-                                </td>
-                                <td> No file</td>
-                                </tr>
-                                {% endfor %}
-                        
-                         
-                    </table>
+    {% block tab1 %}
+        {% include 'officeModule/officeOfDeanStudents/holding_form.html' %}
+    
+    {% endblock %}  
 </div>
 </div>
 
+
+<div class="ui tab" data-tab="old_m">
+    <div class="ui vertical segment">
+        {% block tab2 %}
+        {% include 'officeModule/officeOfDeanStudents/view_meetings.html' %}
+        {% endblock %}
+
+</div>
+</div>
+</script>
+    <script src="https://cdn.rawgit.com/mdehoog/Semantic-UI/6e6d051d47b598ebab05857545f242caf2b4b48c/dist/semantic.min.js"></script>
+    <script type="text/javascript" src="{% static 'globals/js/datepicker.js' %}"></script>
+    <script type="text/javascript" src="{% static 'globals/js/tablesort.js' %}"></script>
+    <script type="text/javascript" src="{% static 'globals/js/modal.js' %}"></script>
+    <script type="text/javascript" src="{% static 'visitor_hostel/visitor-hostel.js' %}"></script>
   
 {% endblock form1%}

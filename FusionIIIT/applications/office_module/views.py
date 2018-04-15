@@ -14,7 +14,7 @@ def officeOfDeanStudents(request):
     clubNew= Club_info.objects.all().filter(status='open')
     club =Club_info.objects.all().exclude(status='open')
     budgets=Club_info.objects.all().filter(status='confirmed')
-    approved_budgets=Club_budget.objects.all().exclude(status='confirmed');
+    approved_budgets=Club_budget.objects.all().filter(status='confirmed');
     context = {'meetingMinutes':minutes,
                 'final_minutes':final_minutes,
                 'hall': Constants.HALL_NO,
@@ -55,14 +55,17 @@ def genericModule(request):
     return render(request, "officeModule/genericModule/genericModule.html", context)
 
 def holdingMeeting(request):
+    # print(request.POST)
     title= request.POST.get('title')
     date = request.POST.get('date')
     Time = request.POST.get('time')
     Venue = request.POST.get('venue')
     Agenda = request.POST.get('Agenda')
     p=Meeting(title=title,venue=Venue,date=date,time=Time,agenda=Agenda);
-    p.save()
-    return HttpResponseRedirect('/office/officeOfDeanStudents')
+    p.save
+    # new = Meeting.objects.latest(date)
+    # print (new)
+    return HttpResponse('ll')
     
 def meetingMinutes(request):
     # print(request.FILES['minutes_file'])

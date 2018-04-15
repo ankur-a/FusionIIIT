@@ -1,3 +1,4 @@
+{% include 'officeModule/officeOfDeanStudents/technicalBudgetsModal.html' %}
 
 
 <div class="ui divider"></div>
@@ -12,9 +13,7 @@
     <tr>
         
 
-        <th class="one wide column">
-            Sr.#
-        </th>
+     
 
         <th class="four wide column">
             Club Name
@@ -34,11 +33,10 @@
     </thead>
 
     <tbody>
-    <tr>
-
         {% for details in budgets%}
             {% if details.category == 'Sports' %}
-        <td>{{  forloop.counter }}</td>
+    <tr onclick="modals('{{ details.pk }}')">
+
         <td>{{  details.club_name }}</td>
         <td>{{  details.alloted_budget }}</td>
         <td>{{  details.spent_budget }}</td>

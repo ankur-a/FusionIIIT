@@ -1,3 +1,4 @@
+{% include 'officeModule/officeOfDeanStudents/technicalBudgetsModal.html' %}
 <form>
     {% comment %}The add a new skill Accordian starts here!{% endcomment %}
     
@@ -14,9 +15,7 @@
      <thead>
     <tr>
 
-        <th class="one wide column">
-            Sr.#
-        </th>
+  
 
         <th class="four wide column">
             Club Name
@@ -35,10 +34,9 @@
     </thead>
 
     <tbody>
-    <tr>
-    {% for details in budgets%}
+        {% for details in budgets%}
         {% if details.category == 'Cultural' %}
-        <td>{{  forloop.counter }}</td>
+    <tr onclick="modals('{{ details.pk }}')">
         <td>{{  details.club_name }}</td>
         <td>{{  details.alloted_budget }}</td>
         <td>{{  details.spent_budget }}</td>
