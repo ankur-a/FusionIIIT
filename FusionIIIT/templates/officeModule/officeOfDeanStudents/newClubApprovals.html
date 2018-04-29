@@ -23,6 +23,7 @@
 			<th>Co Co-ordinator</th>
 			<th>Faculty Incharge</th>
 			<th>Club File</th>
+			<th></th>
 		</tr>
 	</thead>
 	<tbody>
@@ -39,6 +40,9 @@
 			<td><a class="ui inverted circular icon button" style="margin: auto;"  href="/media/{{ i.club_file}}">
                             <i class="large attach black icon"></i>
                         </a></td>
+            <td><div class="ui compact icon button" onclick="view('{{ i.pk }}')">
+                            <i class="expand icon"></i>
+                                </div></td>
 			
 		</tr>
 

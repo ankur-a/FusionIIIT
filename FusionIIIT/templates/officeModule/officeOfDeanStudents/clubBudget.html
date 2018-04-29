@@ -44,6 +44,7 @@
                     <th class="four wide column">
                         Remark
                     </th>
+                    <th> </th>
                 </tr>
                 </thead>
 
@@ -54,15 +55,18 @@
                 <tr>
                     {% for i in budget_app %}
                     <td><input type="checkbox" name="check" value="{{i.id}}"></td>
-                    <td onclick="view('{{ i.pk }}')"> {{ i.club }}</td>
+                    <td > {{ i.club }}</td>
                     <td> {{ i.club.category }}</td>
                     <td>{{i.budget_for}}</td>
-                    <td><a class="ui inverted circular icon button" style="margin: auto;"  href="/media/{{ i.budget_file }}">
+                    <input type="text" name="amount {{i.id}}" value="{{i.budget_amt}}" hidden="true">
+                    <td><a class="ui inverted circular icon button" style="margin: auto;"  href="/media/{{ i.budget_file }}" target="blank">
                             <i class="large attach black icon"></i>
                         </a></td>
                     <td>{{i.budget_amt}}</td>
                     <td><textarea rows="2" name="{{i.id}}"></textarea></td>
-
+                    <td> <div class="ui compact icon button" onclick="view_budget('{{ i.pk }}')">
+                            <i class="expand icon"></i>
+                                </div></td>
                 </tr>
                 {% endfor %}
 
@@ -125,7 +129,7 @@
                     <td> {{ i.club}}</td>
                     <td> {{ i.club.category }}</td>
                     <td>{{i.budget_for}}</td>
-                    <td><a class="ui inverted circular icon button" style="margin: auto;"  href="/media/{{ i.budget_file }}">
+                    <td><a class="ui inverted circular icon button" style="margin: auto;"  href="/media/{{ i.budget_file }}" target="blank">
                             <i class="large attach black icon"></i>
                         </a></td>
                     <td>{{i.budget_amt}}</td>

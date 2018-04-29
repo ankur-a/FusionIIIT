@@ -3,9 +3,9 @@
 
 <script type="text/javascript">
     function view(a){
-        var id= '.ui.modal.'+a;
+        var id= '.ui.modal.club.'+a;
         id=id.replace(" ",".");
-        alert(id);
+       alert(id);
         $(id).modal('show');
     }
 
@@ -25,7 +25,7 @@
 
 {% for i in clubNew %}
 
-<div class="ui modal {{i.pk}} ">
+<div class="ui modal club {{i.pk}} ">
 <div class="header">Club approvals</div>
   <div class="content">
 <form class="ui large form" action="" method="post" enctype="multipart/form-data" id="modal_form">
@@ -42,7 +42,7 @@
 
         <div class="field">
         <label>Club category</label>
-        <input type="text" value="{{ i.pk }}" readonly="true">
+        <input type="text" value="{{ i.category }}" readonly="true">
         </div>
         </div>
         <div class="fields">
@@ -70,6 +70,8 @@
                                     
         <button onclick="submit('approve')" class="ui positive right floated button" type="submit" name="submit" id="approve" formaction="club_approval">Approve</button>
         <button onclick="submit('approve')" class="ui red right floated button" type="submit" name="submit" id="reject" formaction="club_rejection">Reject</button>
+
+        <br> <br>
     </form>
   </div>
 </div>

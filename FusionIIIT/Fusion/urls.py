@@ -31,8 +31,6 @@ urlpatterns = [
     url(r'^library/', include('applications.library.urls')),
     url(r'^leave/', include('applications.leave.urls')),
     url(r'^placement/', include('applications.placement_cell.urls')),
-    url(r'^healthcenter/', include('applications.health_center.urls')),
-    url(r'^gymkhana/', include('applications.gymkhana.urls')),
     url(r'^spacs/', include('applications.scholarships.urls')),
     url(r'^office/', include('applications.office_module.urls')),
     url(r'^visitorhostel/', include('applications.visitor_hostel.urls')),

@@ -1,9 +1,9 @@
 {% load static %}
 {% block modal4 %}
 <script type="text/javascript">
-    function modals(a){
-        var id= '.ui.modal.'+a;
-        alert(id);
+    function modalsshow(a){
+        var id= '.ui.modal.show.'+a;
+        // alert(id);
         id=id.replace(" ",".");
         $(id).modal('show');
        }
@@ -11,16 +11,17 @@
 </script>
 
 {% for i in budgets %}
-<div class="ui modal {{ i.pk }} ">
+<div class="ui modal show {{ i.pk }} ">
+	
 	<div class="header">{{ i.pk }}</div>
-
+	<div class="content">
 	<div class="ui label big">Alloted Budget</div> <label>{{ i.alloted_budget }}</label>
 	<div class="ui label big">Available Budget</div> <label>{{ i.avail_budget }}</label>
 	<div class="ui vertical segment">
 	<h3>Spendings this year</h3>
-	{% for i1 in approved_budgets %}
+	
 		<table class="ui very basic collapsing celled sortable table">
-		{% if i.pk in i1.club|stringformat:"s" %}
+		
 			<thead>
                 <tr>
                     <th class="two wide column">
@@ -38,25 +39,28 @@
                     </th>
                 </tr>
              </thead>
+              {% for i1 in approved_budgets %}
+            {% if i.pk in i1.club|stringformat:"s" %}
              <tbody>
+
              	<tr>
              	<td> {{i1.budget_for}}</td>
-             	<td><a class="ui inverted circular icon button" style="margin: auto;"  href="/media/{{ i1.budget_file }}">
+             	<td><a class="ui inverted circular icon button" style="margin: auto;"  href="/media/{{ i1.budget_file }}" target="blank">
                             <i class="large attach black icon"></i>
                         </a></td>
                  <td>{{i1.budget_amt}}</td>
                  <td>{{ i1.remarks}}</td>
              </tr>
-             	
+             	{% endif %}
+                {% endfor %}
              </tbody>
              
-		{% endif %}
+		
 </table>
-	{% endfor %}
+	
 
+</div>
 
-  <div class="content">
-  </div>
 
 </div>
 

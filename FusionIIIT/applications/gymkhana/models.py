@@ -33,11 +33,11 @@ class Club_info(models.Model):
 	co_coordinator = models.ForeignKey(Student, null=False, related_name='coco_of')
 	faculty_incharge = models.ForeignKey(ExtraInfo, null=False, related_name='faculty_incharge_of')	
 	club_file = models.FileField(upload_to='uploads/',null=True)
-	activity_calender = models.FileField(upload_to='uploads/',null=True)
+	activity_calender = models.FileField(upload_to='uploads/', null= True, default=" ")
 	description = models.TextField(max_length=256, null=True)
-	alloted_budget=models.IntegerField(null=True)
-	spent_budget = models.IntegerField(null=True)
-	avail_budget=models.IntegerField(null=True)
+	alloted_budget=models.IntegerField(null=True , default=0)
+	spent_budget = models.IntegerField(null=True , default=0)
+	avail_budget=models.IntegerField(null=True , default=0)
 	status = models.CharField(max_length=50, choices = Constants.status, default = 'open')
 
 	def __str__(self):
@@ -52,6 +52,7 @@ class Club_member(models.Model):
 	club = models.ForeignKey(Club_info, related_name='this_club', null=False)
 	description = models.TextField(max_length=256, null=True)
 	status = models.CharField(max_length=50, choices = Constants.status, default = 'open')
+	remarks = models.CharField(max_length = 256, null = True)
 
 	def __str__(self):
 		return str(self.member.id)
@@ -145,18 +146,3 @@ class Other_report(models.Model):
 
 	class Meta:
 		db_table = 'Other_report'
-
-class Change_office(models.Model):
-	id = models.AutoField(max_length=20,primary_key=True)
-	club = models.ForeignKey(Club_info, max_length=50,null=False)
-	co_ordinator = models.ForeignKey(User, null=False, related_name='co_of')
-	co_coordinator = models.ForeignKey(User, null=False, related_name='coco_of')
-	status = models.CharField(max_length=50, choices=Constants.status, default='open')
-	date_request = models.DateTimeField(max_length=50,default=datetime.now()+ timedelta(days=1), blank = True)
-	date_approve = models.DateTimeField(max_length=50, blank = True)
-
-	def __str__(self):
-		return self.id
-
-	class Meta:
-		db_table = 'Change_office'

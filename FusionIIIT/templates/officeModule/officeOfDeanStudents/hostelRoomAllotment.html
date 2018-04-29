@@ -1,5 +1,6 @@
 {% block hostelRoomAllotment%}
-<h3>Hostel Allotment</h3>
+
+<h3>Hostel Allotment</h3> 
 <div class="ui pointing secondary menu">
                                 <a class=" active item" data-tab="new_allotment">
                                 New Allotment
@@ -19,8 +20,13 @@
   	<i class="dropdown icon"></i>
   	<div class="default text">Hall No.</div>
   	<div class="menu">
+     
       {% for i in hall %}
-    <div class="item" data-value="{{ i.1 }}">{{ i.0 }}</div>
+
+     
+
+    <div class="item" data-value="{{ i }}">{{ i }}</div>
+    
       {% endfor %}
   </div>
 </div>
@@ -46,7 +52,7 @@
 	<tr>
     {% for items in hall_allotment %}
 		<td >{{ items.hall_no }}</td>
-		<td><a class="ui inverted circular icon button" style="margin: auto;"  href="/media/{{ items.allotment_file }}">
+		<td><a class="ui inverted circular icon button" style="margin: auto;"  href="/media/{{ items.allotment_file }}" target="blank">
                             <i class="large attach black icon"></i>
                         </a></td>
 	</tr>

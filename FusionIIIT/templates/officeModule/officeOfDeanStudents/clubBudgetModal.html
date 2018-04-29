@@ -2,9 +2,9 @@
 {% block modal1 %}
 
 <script type="text/javascript">
-    function view(a){
-        var id= '.ui.modal.'+a;
-        //alert(id);
+    function view_budget(a){
+        var id= '.ui.modal.club.'+a;
+        // alert(id);
         $(id).modal('show');
     }
 
@@ -24,7 +24,7 @@
 
 {% for i in budget_app %}
 
-<div class="ui modal {{i.pk}} ">
+<div class="ui modal club {{i.pk}} ">
 <div class="header">Club Budget approvals</div>
   <div class="content">
 <form class="ui large form" action="" method="post" enctype="multipart/form-data" id="modal_form">
@@ -51,11 +51,14 @@
 
          <div class="field">
             <label>File</label>
-        <a class="ui inverted circular icon button" style="margin: auto;"  href="/media/{{ i.budget_file }}">
+        <a class="ui inverted circular icon button" style="margin: auto;"  href="/media/{{ i.budget_file }}" target="blank">
                             <i class="large attach black icon"></i>
                         </a>
         </div>
-
+        <div class="field">
+        <label>Description</label>
+        <input type="text" rows="2" value="{{ i.description }}" readonly="true"></textarea>
+         </div>
         <div class="field">
         <label>Remark</label>
         <textarea rows="2" name="{{i.id}}"></textarea>
@@ -64,6 +67,8 @@
                                     
         <button onclick="submit('approve')" class="ui positive right floated button" type="submit" name="submit" id="approve" formaction="budget_approval">Approve</button>
         <button onclick="submit('approve')" class="ui red right floated button" type="submit" name="submit" id="reject" formaction="budget_rejection">Reject</button>
+
+        <br> <br>
     </form>
   </div>
 </div>

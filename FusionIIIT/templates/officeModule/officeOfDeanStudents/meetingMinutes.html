@@ -29,7 +29,7 @@
                                 <td>{{  details.time }}</td>
                                 <td>{{  details.venue }}</td>
                                 <td>{{  details.date }}
-                                    <input type="text" name="id" hidden="true" value="{{details.id}}">
+                                    <input type="text" name="id" hidden="true" value="{{details.pk}}">
                                 </td>
                                 <td><input type="file" name="minutes_file" placeholder="meeting minutes"></td>
                                 <td> <button class="ui button" type="submit">Submit</button></td>
@@ -60,7 +60,7 @@
                                 <td>{{  details.time }}</td>
                                 <td>{{  details.date }}</td>
                                 <td>{{  details.venue }}</td>
-                                <td><a class="ui inverted circular icon button" style="margin: auto;"  href="/media/{{  details.minutes_file }}">
+                                <td><a class="ui inverted circular icon button" style="margin: auto;"  href="/media/{{  details.minutes_file }}" target="blank">
                             <i class="large attach black icon"></i>
                         </a>
                         </tr>

@@ -51,12 +51,33 @@ class Constants:
             ("other", "Other than the ones listed"),
         )
 
+    DESIGNATIONS = (
+        ('academic', 'Academic Designation'),
+        ('administrative', 'Administrative Designation')
+    )
 
 class Designation(models.Model):
-    name = models.CharField(max_length=20, unique=True, blank=False, default='student')
+    name = models.CharField(max_length=50, unique=True,
+                            blank=False, default='student')
+    full_name = models.CharField(
+        max_length=100, default='Computer Science and Engineering')
+
+    type = models.CharField(
+        max_length=30, default='academic', choices=Constants.DESIGNATIONS)
 
     def __str__(self):
         return self.name
+
+class HoldsDesignation(models.Model):
+    user = models.ForeignKey(
+        User, related_name='holds_designations', on_delete=models.CASCADE)
+    working = models.ForeignKey(User, related_name='current_designation')
+    designation = models.ForeignKey(
+        Designation, related_name='designees', on_delete=models.CASCADE)
+    held_at = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return '{} - {}'.format(self.user.username, self.designation)
 
 
 class DepartmentInfo(models.Model):
@@ -74,8 +95,6 @@ class ExtraInfo(models.Model):
     address = models.TextField(max_length=1000, default="")
     phone_no = models.BigIntegerField()
     user_type = models.CharField(max_length=20, choices=Constants.USER_CHOICES)
-    designation = models.ForeignKey(Designation, on_delete=models.CASCADE,
-                                    related_name='holds_designation', null=True)
     department = models.ForeignKey(DepartmentInfo, on_delete=models.CASCADE, null=True, blank=True)
     profile_picture = models.ImageField(null=True, blank=True)
     about_me = models.TextField(default='', max_length=1000, blank=True)

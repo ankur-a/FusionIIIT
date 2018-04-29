@@ -7,6 +7,7 @@
                                                 <th>Date</th>
                                                  <th>Venue</th>
                                                  <th>File</th>
+                                                 <th> </th>
                                             </tr>
                         </thead>
                         
@@ -16,9 +17,12 @@
                                 <td>{{  details.time }}</td>
                                 <td>{{  details.date }}</td>
                                 <td>{{  details.venue }}</td>
-                                <td><a class="ui inverted circular icon button" style="margin: auto;"  href="/media/{{  details.minutes_file }}">
+                                <td><a class="ui inverted circular icon button" style="margin: auto;"  href="/media/{{  details.minutes_file }}" target="blank">
                             <i class="large attach black icon"></i>
                         </a> </td>
+                        <td> <button class="ui compact icon button" onclick="modals('{{ details.pk }}')">
+                            <i class="expand icon"></i>
+                                </button></td>
                         </tr>
                         {% endfor %}
                        

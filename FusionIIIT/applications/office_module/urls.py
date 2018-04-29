@@ -19,5 +19,8 @@ urlpatterns = [
     url(r'^officeOfDeanStudents/budget_rejection', views.budgetRejection),
     url(r'^officeOfDeanStudents/club_approval', views.clubApproval),
     url(r'^officeOfDeanStudents/club_rejection', views.clubRejection),
+    url(r'^officeOfDeanStudents/budgetAllot', views.budgetAllot),
+    url(r'^officeOfDeanStudents/budgetAllotEdit', views.budgetAllotEdit),
+
 
 ]

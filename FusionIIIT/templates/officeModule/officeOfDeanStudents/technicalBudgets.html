@@ -22,14 +22,16 @@
         </th>
         <th class="four wide column">
             Budget available
-        </th>        
+        </th> 
+
+        <th> </th>       
 
     </tr>
     </thead>
 
     <tbody>
         {% for details in budgets%}
-    <tr onclick="modals('{{ details.pk }}')">
+    <tr onclick="modalsshow('{{ details.pk }}')">
     
         {% if details.category == 'Technical' %}
        
@@ -37,6 +39,9 @@
         <td>{{  details.alloted_budget }}</td>
         <td>{{  details.spent_budget }}</td>
         <td>{{  details.avail_budget }}</td>
+        <td> <button class="ui compact icon button" onclick="modalsshow('{{ details.pk }}')">
+                            <i class="expand icon"></i>
+                                </button></td>
         </tr>
         {% else %}
         
