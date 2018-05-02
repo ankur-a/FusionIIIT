@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render , get_object_or_404
 from django.http import HttpResponse , HttpResponseRedirect
 from applications.academic_information.models import Meeting
 from .models import Constants,hostel_allotment,Budget
@@ -48,7 +48,6 @@ def officeOfDeanStudents(request):
 
 @login_required
 def holdingMeeting(request):
-    # print(request.POST)
     title= request.POST.get('title')
     date = request.POST.get('date')
     Time = request.POST.get('time')
@@ -64,7 +63,6 @@ def meetingMinutes(request):
     id=request.POST.get('id')
     b=Meeting.objects.get(pk=id)
     b.minutes_file=file
-    print id
     b.save()
     return HttpResponseRedirect('/office/officeOfDeanStudents')
 
@@ -108,11 +106,17 @@ def budgetRejection(request):
 
 @login_required
 def clubApproval(request):
-    print(request.POST)
     id_r=request.POST.getlist('check')
-    print id_r
     for i in range(len(id_r)):
         a=Club_info.objects.get(pk=id_r[i])
+        co_ordinator= a.co_ordinator.id.user
+        co_co = a.co_coordinator.id.user
+        designation = get_object_or_404(Designation, name="co-ordinator")
+        designation1 = get_object_or_404(Designation, name="co co-ordinator")
+        HoldsDesig= HoldsDesignation(user=co_ordinator,working=co_ordinator,designation=designation)
+        HoldsDesig.save()
+        HoldsDesig = HoldsDesignation( user= co_co, working= co_co, designation=designation1)
+        HoldsDesig.save()
         a.status='confirmed'
         a.save()
     return HttpResponseRedirect('/office/officeOfDeanStudents')
